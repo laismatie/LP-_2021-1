@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="app">
     <v-main>
       <Curriculum/>
     </v-main>
@@ -21,3 +21,8 @@ export default {
   }),
 };
 </script>
+<style scoped>
+.app{
+  margin: 10px 0px;
+}
+</style>
