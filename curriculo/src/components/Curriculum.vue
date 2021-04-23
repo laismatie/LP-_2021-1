@@ -34,7 +34,7 @@
         >
             <span class="information">Informações</span>
             <div class="sec">
-              <p class="sub">Idade: 20 anos <br>
+              <p class="text">Idade: 20 anos <br>
               Estado civil: Solteira <br>
               Naturalidade: Miranda/MS<br>
               Nacionalidade: Brasil</p>
