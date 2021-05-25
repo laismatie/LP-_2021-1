@@ -1,8 +1,10 @@
+import axios from "axios"
 import React, { Component } from "react"
 import PageHeader from "../template/pageHeader"
 import TodoForm from "../todo/todoForm"
 import TodoList from "../todo/todoList"
 
+const URL_NODE_EXPRESS = 'http://localhost:3001/api/todos'
 export default class Todo extends Component {
 
     constructor(props){
@@ -10,8 +12,8 @@ export default class Todo extends Component {
 
         this.state = {description: "", list:[]}
 
-        this.handleAdd = this.handleAdd.bind(this)
         this.handleChange= this.handleChange.bind(this)
+        this.handleAdd= this.handleAdd.bind(this)
 
     }
     
@@ -20,7 +22,8 @@ export default class Todo extends Component {
     }
 
     handleAdd(){
-        console.log(this.state.description)
+        const description = this.state.description;
+        axios.post(URL_NODE_EXPRESS, {description});
     }
 
     render() {
