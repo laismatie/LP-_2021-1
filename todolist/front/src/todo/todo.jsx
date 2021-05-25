@@ -14,28 +14,38 @@ export default class Todo extends Component {
 
         this.handleChange= this.handleChange.bind(this)
         this.handleAdd= this.handleAdd.bind(this)
+        this.handleSearch= this.handleSearch.bind(this)
+
+        this.handleSearch()
 
     }
     
-    handleChange(e){
-        this.setState({...this.state, description: e.target.value})
-    }
-
     handleAdd(){
         const description = this.state.description;
-        axios.post(URL_NODE_EXPRESS, {description});
+        axios.post(URL_NODE_EXPRESS, {description})
+        .then(resp => this.handleSearch());
     }
+
+    handleSearch(description = ''){
+        const search = description ? '&description__regex=/${description}' : '';
+        axios.get('${URL_NODE_EXPRESS}?sort=-createdAt${search}')
+            .then(resp => this.setState({...this.state, description, list: resp.data}))
+    }
+
+    handleChange(e){
+        this.setState({...this.state, description: e.target.value})
+    } 
 
     render() {
         return (
             <div>
                 <PageHeader name="Tarefas" small="Cadastro"></PageHeader>
-                <TodoForm
-                    description={this.state.description}
+                <TodoForm description={this.state.description}
                     handleAdd={this.handleAdd}
+                    handleSearch={this.handleSearch}
                     handleChange={this.handleChange}
                 />
-                <TodoList />
+                <TodoList list={this.state.list}/>
             </div>
 
         )
