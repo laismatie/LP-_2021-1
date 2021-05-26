@@ -1,10 +1,15 @@
 .btn{
-    margin-right: 8px;
+    margin-right: 5px;
 }
 
 .markedAsDone{
     text-decoration: line-through;
     color: red;
+}
+
+.todo{
+    text-decoration: none;
+    color: black;
 }
 
 .tableActions{
@@ -13,4 +18,9 @@
 
 .todoForm{
     padding-bottom: 50px;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
 }
